@@ -15,25 +15,6 @@ def euclidean_distance(vectors):
 	# return the euclidean distance between the vectors
 	return K.sqrt(K.maximum(sumSquared, K.epsilon()))
 
-
-def plot_training(H, plotPath):
-	# construct a plot that plots and saves the training history
-	plt.style.use("ggplot")
-	plt.figure()
-	plt.plot(H.history["accuracy"], label="train_acc")
-	plt.plot(H.history["val_accuracy"], label="val_acc")
-	plt.title("Accuracy")
-	plt.xlabel("Epoch #")
-	plt.ylabel("Accuracy")
-	plt.legend(loc="lower left")
-	plt.savefig(plotPath)
-
-
-def compute_accuracy(y_true, y_pred):
-	pred = y_pred.ravel() < 0.5
-	return np.mean(pred == y_true)
-
-
 def splitTrainTestSet(X1, X2, y, testRatio, randomState=345):
 	X1_train, X1_test, X2_train, X2_test, y_train, y_test = train_test_split(X1, X2, y, test_size=testRatio,
 																			 random_state=randomState,
